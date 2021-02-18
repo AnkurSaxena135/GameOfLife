@@ -6,7 +6,7 @@ Directory structure
 ```
 
     ├── README.md               <- The top-level README for developers using this project.
-
+    |
     ├── requirements.txt        <- python requirements.
     |
     ├── game_of_life            <- Source code
