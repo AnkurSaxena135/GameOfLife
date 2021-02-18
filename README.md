@@ -26,9 +26,11 @@ Directory structure
 
 ## Steps to run
 
-1. Paste the pattern in `game_of_life/init_pattern.txt` file.
-2. Build the docker image: `docker build . -t game-of-life`
-3. Run image in interactive shell to view output on console: `docker run --rm -it  game-of-life:latest`
+1. Clone the repo at tag `v1.0.0`: `git clone --depth 1 --branch v1.0.0 https://github.com/AnkurSaxena135/GameOfLife.git`
+2. Change directory to `GameOfLife`
+3. Paste the pattern in `game_of_life/init_pattern.txt` file.
+4. Build the docker image: `docker build . -t game-of-life`
+5. Run image in interactive shell to view output on console: `docker run --rm -it  game-of-life:latest`
 
 
 ## Interacting with package
