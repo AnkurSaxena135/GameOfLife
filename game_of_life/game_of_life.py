@@ -2,11 +2,21 @@
 Implementation of Game Of Life
 
 Usage:
->>> alive_cells = [(2, 1), (2, 3), (0, 2), (2, 2), (1, 3)]
->>> GameOfLife(10, alive_cells).run(10)
+    Pass alive cells coordinates explicitly
+    >>> alive_cells = [(2, 1), (2, 3), (0, 2), (2, 2), (1, 3)]
+    >>> GameOfLife(10, alive_cells).run(10)
+
+    Pass patern of alive cells in file `init_state.txt`
+    in same directory as this file
+    >>> GameOfLife(10).run(10)
+
 """
+import os
+
 DEAD = 0
 ALIVE = 1
+PATTERN_FILE = "init_state.txt"
+DEFAULT_BOARD_SIZE = 25
 EIGHT_NEIGHBOURS = [
     (-1, -1),
     (0, -1),
@@ -20,7 +30,7 @@ EIGHT_NEIGHBOURS = [
 
 
 class GameOfLife(object):
-    def __init__(self, size: int, alive_cells: list):
+    def __init__(self, size: int = DEFAULT_BOARD_SIZE, alive_cells: list = None):
         """Create a SQUARE board of dimension (size x size)
         All cells except those in alive_cells are initialized to DEAD.
 
@@ -29,8 +39,11 @@ class GameOfLife(object):
             alive_cells: list of x,y coordinates for alive cells
                 e.g. [(1,1), (1,2)]
         """
+
         self._grid_size = (size, size)
         self._board = [[DEAD for _ in range(size)] for _ in range(size)]
+
+        alive_cells = alive_cells or type(self)._parse_alive_cells()
         self._alive_cells = set(alive_cells)
         self._update_board(self._alive_cells, ALIVE)
 
@@ -150,7 +163,25 @@ class GameOfLife(object):
 
         yield from self._traverse(unvisited, visited)
 
+    @staticmethod
+    def _parse_alive_cells():
+        """Parse alive cells from a file
+        file must be in same folder as this file.
+        """
+        here = os.path.abspath(os.path.dirname(__file__))
+        pattern_path = os.path.join(here, PATTERN_FILE)
+        active_cells = []
+        with open(pattern_path, "r") as fp:
+            for row, content in enumerate(fp.readlines()):
+                active_cells.extend(
+                    [
+                        (row, col)
+                        for col, char in enumerate(content)
+                        if char == str(ALIVE)
+                    ]
+                )
+        return active_cells
+
 
 if __name__ == "__main__":
-    alive_cells = [(2, 1), (2, 3), (0, 2), (2, 2), (1, 3)]
-    GameOfLife(10, alive_cells).run(10)
+    GameOfLife().run(5)
