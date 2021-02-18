@@ -16,4 +16,4 @@ ADD . /usr/src
 RUN pip install -r requirements.txt
 
 ENTRYPOINT ["python", "game_of_life/game_of_life.py"]
-CMD ["10"]
+CMD ["20"]
