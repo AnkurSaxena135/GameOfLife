@@ -184,4 +184,11 @@ class GameOfLife(object):
 
 
 if __name__ == "__main__":
-    GameOfLife().run(5)
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Game of life simulation")
+    parser.add_argument("gens", type=int, help="number of generations to simulate")
+    parser.add_argument("--size", type=int, default=25, help="board size")
+
+    args = parser.parse_args()
+    GameOfLife(args.size).run(args.gens)
