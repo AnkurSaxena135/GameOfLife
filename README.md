@@ -26,7 +26,7 @@ Directory structure
 
 1. Paste the pattern in `game_of_life/init_pattern.txt` file.
 2. Build the docker image: `docker build . -t game-of-life`
-3. Run image in interactive shell to view output on console. `docker run --rm -it  game-of-life:latest`
+3. Run image in interactive shell to view output on console: `docker run --rm -it  game-of-life:latest`
 
 
 ## Interacting with package
@@ -50,8 +50,8 @@ optional arguments:
 
 ### Docker commands 
 
-Example 1: To run 20 generations, for board size 5 command is: `docker run --rm -it  game-of-life:latest --size 5 20`
-Example 2: To run 10 generations, for board size 25 command is: `docker run --rm -it  game-of-life:latest --size 25 10`
++ **Example 1**: To run 20 generations, for board size 5 command is: `docker run --rm -it  game-of-life:latest --size 5 20`
++ **Example 2**: To run 10 generations, for board size 25 command is: `docker run --rm -it  game-of-life:latest --size 25 10`
 
 ## NOTE
  For every change in `init_pattern.txt`, new build is required.
