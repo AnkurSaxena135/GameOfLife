@@ -9,6 +9,8 @@ Directory structure
     |
     ├── requirements.txt        <- python requirements.
     |
+    ├── Dockerfile              <- dockerfile
+    |
     ├── game_of_life            <- Source code
     │   ├── game_of_life.py     <- main class
     │   └── init_state.txt      <- initial state pattern file
