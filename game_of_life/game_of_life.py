@@ -4,11 +4,11 @@ Implementation of Game Of Life
 Usage:
     Pass alive cells coordinates explicitly
     >>> alive_cells = [(2, 1), (2, 3), (0, 2), (2, 2), (1, 3)]
-    >>> GameOfLife(10, alive_cells).run(10)
+    >>> GameOfLife(alive_cells=alive_cells).run(10)
 
     Pass patern of alive cells in file `init_state.txt`
     in same directory as this file
-    >>> GameOfLife(10).run(10)
+    >>> GameOfLife().run(10)
 
 """
 import os
